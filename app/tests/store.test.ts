@@ -3,11 +3,11 @@
  */
 import history from '../utils/history';
 import configureStore from '../configureStore';
-import { InjectedStore } from '../types';
+import { LifeStore } from '../types';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 describe('configureStore', () => {
-  let store: InjectedStore;
+  let store: LifeStore;
 
   beforeAll(() => {
     store = configureStore({}, history);

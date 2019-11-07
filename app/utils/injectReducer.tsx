@@ -3,7 +3,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useStore } from 'react-redux';
 
 import { getInjectors } from './reducerInjectors';
-import { InjectReducerParams, InjectedStore } from 'types';
+import { InjectReducerParams, LifeStore } from 'types';
 
 /**
  * Dynamically injects a reducer
@@ -44,7 +44,7 @@ export default function hocWithReducer<P>({
 }
 
 const useInjectReducer = ({ key, reducer }: InjectReducerParams) => {
-  const store = useStore() as InjectedStore;
+  const store = useStore() as LifeStore;
   React.useEffect(() => {
     getInjectors(store).injectReducer(key, reducer);
   }, []);

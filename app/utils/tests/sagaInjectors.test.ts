@@ -14,7 +14,7 @@ import {
   ejectSagaFactory,
 } from '../sagaInjectors';
 import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from '../constants';
-import { InjectedStore } from '../../../../app/types';
+import { LifeStore } from 'types';
 
 function* testSaga() {
   yield put({ type: 'TEST', payload: 'yup' });
@@ -22,7 +22,7 @@ function* testSaga() {
 
 describe('injectors', () => {
   const originalNodeEnv = process.env.NODE_ENV;
-  let store: InjectedStore;
+  let store: LifeStore;
   let injectSaga: ReturnType<typeof injectSagaFactory>;
   let ejectSaga: ReturnType<typeof ejectSagaFactory>;
 

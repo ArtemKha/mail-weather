@@ -3,7 +3,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useStore } from 'react-redux';
 
 import { getInjectors } from './sagaInjectors';
-import { InjectSagaParams, InjectedStore } from 'types';
+import { InjectSagaParams, LifeStore } from 'types';
 
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
@@ -55,7 +55,7 @@ export default function hocWithSaga<P>({ key, saga, mode }: InjectSagaParams) {
 }
 
 const useInjectSaga = ({ key, saga, mode }: InjectSagaParams) => {
-  const store = useStore() as InjectedStore;
+  const store = useStore() as LifeStore;
   React.useEffect(() => {
     const injectors = getInjectors(store);
     injectors.injectSaga(key, { saga: saga, mode: mode });
