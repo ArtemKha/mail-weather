@@ -1,7 +1,7 @@
 import { Reducer, Store } from 'redux';
 import { RouterState } from 'connected-react-router';
 import { ContainerState as LanguageProviderState } from 'containers/LanguageProvider/types';
-import { City } from 'containers/App/types';
+import { City, ContainerState } from 'containers/App/types';
 
 export interface LifeStore extends Store {
   injectedReducers: any;
@@ -25,7 +25,7 @@ export interface InjectSagaParams {
 
 // Your root reducer type, which is your redux state types also
 export interface ApplicationRootState {
-  readonly cities: City[];
+  readonly global: ContainerState;
   readonly router: RouterState;
   readonly language: LanguageProviderState;
   // for testing purposes

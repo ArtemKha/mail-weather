@@ -1,20 +1,21 @@
-/**
- *
- * App.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- *
- */
-
-import * as React from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import saga from './saga';
+import reducer from './reducer';
+
+const key = 'global';
+
 export default function App() {
+  useInjectReducer({ key: key, reducer: reducer });
+  useInjectSaga({ key: key, saga: saga });
+
   return (
     <div>
       <Switch>

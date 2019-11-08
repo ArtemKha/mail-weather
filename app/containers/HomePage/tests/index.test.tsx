@@ -1,7 +1,3 @@
-/**
- * Test the HomePage
- */
-
 import React from 'react';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
@@ -19,5 +15,17 @@ describe('<HomePage />', () => {
       </IntlProvider>,
     );
     expect(firstChild).toMatchSnapshot();
+  });
+
+  it('should add cities on select input', () => {
+    //
+  });
+
+  it('should filter active cities on a temperature filter move', () => {
+    //
+  });
+
+  it('should remove an active city on a remove button push', () => {
+    //
   });
 });

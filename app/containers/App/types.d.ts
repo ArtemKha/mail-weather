@@ -72,11 +72,4 @@ interface ResponseCity {
   weather: Weather[];
 }
 
-export {
-  RootState,
-  ContainerState,
-  ContainerActions,
-  UserData,
-  City,
-  ResponseCity,
-};
+export { RootState, ContainerState, ContainerActions, City, ResponseCity };

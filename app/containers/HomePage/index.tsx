@@ -1,22 +1,37 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
- */
-
-import * as React from 'react';
+import React, { useState } from 'react';
+import { Select, Slider } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import Search from './Search';
+import { Container, SliderSection } from './styled';
+import { CityInfo } from './CityInfo';
+import {
+  useSelector as useReduxSelector,
+  TypedUseSelectorHook,
+} from 'react-redux';
+import { ApplicationRootState } from 'types';
+import { City } from 'containers/App/types';
 
-export default function HomePage() {
+const useSelector: TypedUseSelectorHook<
+  ApplicationRootState
+> = useReduxSelector;
+
+const HomePage: React.FC = () => {
+  const cities: City[] = useSelector(state => state.global.cities);
+  const [activeCities, setActiveCities] = useState(cities.slice(0, 3));
+
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <Container>
+      <Search options={cities} />
+      <SliderSection>
+        <FormattedMessage {...messages.warmer} />
+        <Slider defaultValue={30} />
+      </SliderSection>
+      {activeCities.map((city, i) => (
+        <CityInfo key={i} city={city} />
+      ))}
+    </Container>
   );
-}
+};
+
+export default HomePage;
