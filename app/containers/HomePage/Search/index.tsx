@@ -1,13 +1,16 @@
 import React from 'react';
 import { Select } from 'antd';
 import { City } from 'containers/App/types';
+import { FormattedMessage } from 'react-intl';
+import messages from '../messages';
 
 const { Option } = Select;
 
 interface Props {
   options: City[];
+  onSelect: () => void;
 }
-const Search: React.FC<Props> = ({ options }) => {
+const Search: React.FC<Props> = ({ options, onSelect }) => {
   function filterOption(input, option) {
     return (
       option.props
@@ -18,25 +21,24 @@ const Search: React.FC<Props> = ({ options }) => {
   }
 
   return (
-    <>
-      <Select
-        showSearch
-        style={{ width: 200 }}
-        placeholder="Select a person"
-        optionFilterProp="children"
-        // onChange={onChange}
-        // onFocus={onFocus}
-        // onBlur={onBlur}
-        // onSearch={onSearch}
-        filterOption={filterOption}
-      >
-        {options.map(city => (
-          <Option key={city.name} value={city.name}>
-            {city.name}
-          </Option>
-        ))}
-      </Select>
-    </>
+    <Select
+      showSearch
+      style={{ width: '100%' }}
+      placeholder="Выберете город"
+      optionFilterProp="children"
+      onChange={onSelect}
+      // onFocus={onFocus}
+      // onBlur={onBlur}
+      // onSearch={onSearch}
+      notFoundContent={<FormattedMessage {...messages.notFound} />}
+      filterOption={filterOption}
+    >
+      {options.map(city => (
+        <Option key={city.name} value={city.name}>
+          {city.name}
+        </Option>
+      ))}
+    </Select>
   );
 };
 

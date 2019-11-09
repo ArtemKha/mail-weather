@@ -12,6 +12,10 @@ export default defineMessages({
     id: `${scope}.placeholder`,
     defaultMessage: 'Search',
   },
+  notFound: {
+    id: `${scope}.notFound`,
+    defaultMessage: 'Измените город или температуру в запросе',
+  },
   pm: {
     id: `${scope}.pm`,
     defaultMessage: 'PM 10',
@@ -23,6 +27,10 @@ export default defineMessages({
   temperature: {
     id: `${scope}.temperature`,
     defaultMessage: 'Температура',
+  },
+  ms: {
+    id: `${scope}.ms`,
+    defaultMessage: 'м/с',
   },
   warmer: {
     id: `${scope}.warmer`,

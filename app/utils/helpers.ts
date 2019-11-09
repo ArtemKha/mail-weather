@@ -6,6 +6,6 @@ export function mapResponse(list: ResponseCity[]): City[] {
     name: new cyrillicToTranslit().reverse(city.name),
     pm: Math.floor(Math.random() * 200),
     wind: city.wind.speed,
-    temp: city.main.temp,
+    temp: Math.round(city.main.temp),
   }));
 }

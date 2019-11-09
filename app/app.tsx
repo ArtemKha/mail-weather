@@ -1,10 +1,3 @@
-/**
- * app.js
- *
- * This is the entry file for the application, only setup and boilerplate
- * code.
- */
-
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
@@ -33,12 +26,12 @@ import configureStore from './configureStore';
 // Import i18n messages
 import { translationMessages } from 'i18n';
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// Observe loading of Ubuntu (to remove Ubuntu, remove the <link> tag in
 // the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+const fontObserver = new FontFaceObserver('Ubuntu', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
+// When Ubuntu is loaded, add a font-family using Ubuntu to the body
+fontObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
