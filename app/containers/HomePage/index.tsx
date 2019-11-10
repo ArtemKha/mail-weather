@@ -4,6 +4,7 @@ import {
   useDispatch,
   TypedUseSelectorHook,
 } from 'react-redux';
+import FlipMove from 'react-flip-move';
 import { Slider } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import { ApplicationRootState } from 'types';
@@ -30,8 +31,8 @@ const HomePage: React.FC = () => {
     state.global.cities,
     state.global.temperature,
   ]);
-  const [activeCities, setActiveCities] = useState(cities.slice(0, 3));
-  const [optionCities, setOptionCities] = useState(cities.slice(0, 3));
+  const [activeCities, setActiveCities] = useState(cities.slice(5, 8));
+  const [optionCities, setOptionCities] = useState(cities);
 
   const dispatch = useDispatch();
 
@@ -61,15 +62,19 @@ const HomePage: React.FC = () => {
           <FormattedMessage {...messages.warmer} />
         </Label>
         <RangeInput>
-          <Slider onChange={onFilter} min={-50} defaultValue={1} max={50} />
+          <Slider onChange={onFilter} min={-20} defaultValue={0} max={20} />
         </RangeInput>
       </Filter>
       <Section>
-        {activeCities
-          .filter(city => city.temp >= temperature)
-          .map(city => (
-            <CityInfo key={city.name} city={city} onClose={onClose} />
-          ))}
+        <div>
+          <FlipMove>
+            {activeCities
+              .filter(city => city.temp >= temperature)
+              .map(city => (
+                <CityInfo key={city.name} city={city} onClose={onClose} />
+              ))}
+          </FlipMove>
+        </div>
       </Section>
     </Container>
   );
