@@ -9,9 +9,10 @@ import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import { LifeStore } from 'types';
 import { History } from 'history';
+import { RootState } from 'containers/App/types';
 
 export default function configureStore(
-  initialState: {} = {},
+  initialState: RootState | {} = {},
   history: History,
 ) {
   const reduxSagaMonitorOptions = {};

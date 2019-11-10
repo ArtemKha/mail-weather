@@ -29,7 +29,8 @@ export const Close = styled.button`
   }
 `;
 
-export const Title = styled.span`
+export const Title = styled.label`
+  font-family: inherit;
   flex-basis: 60%;
   font-size: 1.2em;
   margin: auto;

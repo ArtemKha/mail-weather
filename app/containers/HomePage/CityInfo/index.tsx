@@ -23,7 +23,7 @@ export class CityInfo extends Component<Props> {
         >
           <Icon type="close-circle" />
         </Close>
-        <Title>
+        <Title data-testid="list-city-name">
           {city.name}, {city.temp}&#8451;
         </Title>
         <Info>

@@ -1,4 +1,7 @@
----
+<div style="margin: 0 auto; text-align: center;">
+  <p>Weater app</p>
+  <img src="https://media.giphy.com/media/McUy2yqaO7SvtUvob4/giphy.gif" style="max-width: 250px;"/>
+</div>
 
 # Typescript
 
