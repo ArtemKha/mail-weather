@@ -9,8 +9,6 @@ import { Slider } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import { ApplicationRootState } from 'types';
 import { City } from 'containers/App/types';
-import saga from 'containers/App/saga';
-import reducer from 'containers/App/reducer';
 import { setTemperature, loadCities } from 'containers/App/actions';
 import {
   Container,
@@ -23,39 +21,21 @@ import {
 import { CityInfo } from './CityInfo';
 import messages from './messages';
 import Search from './Search';
-import { useInjectReducer } from 'utils/injectReducer';
-import { useInjectSaga } from 'utils/injectSaga';
-
-const key = 'global';
 
 const useSelector: TypedUseSelectorHook<
   ApplicationRootState
 > = useReduxSelector;
 
 const HomePage: React.FC = () => {
-  useInjectReducer({ key, reducer });
-  useInjectSaga({ key, saga });
-
   const [cities, temperature]: [City[], number] = useSelector(({ global }) => [
     global.cities,
     global.temperature,
   ]);
+
   const [activeCities, setActiveCities] = useState(cities.slice(5, 8));
   const [optionCities, setOptionCities] = useState(cities);
 
   const dispatch = useDispatch();
-
-  const interval = 60; // weather updates every minute
-
-  useEffect(() => {
-    dispatch(loadCities());
-
-    const updateRate = setInterval(() => {
-      dispatch(loadCities());
-    }, 1000 * interval);
-
-    return () => clearInterval(updateRate);
-  });
 
   useEffect(() => {
     setOptionCities(cities.filter(city => city.temp >= temperature));
