@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from 'antd';
 import { City } from 'containers/App/types';
 import { FormattedMessage } from 'react-intl';
@@ -8,9 +8,10 @@ const { Option } = Select;
 
 interface Props {
   options: City[];
-  onSelect: () => void;
+  onSelect: (name: string) => void;
 }
 const Search: React.FC<Props> = ({ options, onSelect }) => {
+  const [selected, setSelected] = useState('');
   function filterOption(input, option) {
     return (
       option.props
@@ -24,12 +25,10 @@ const Search: React.FC<Props> = ({ options, onSelect }) => {
     <Select
       showSearch
       style={{ width: '100%' }}
-      placeholder="Выберете город"
+      placeholder={<FormattedMessage {...messages.placeholder} />}
       optionFilterProp="children"
       onChange={onSelect}
-      // onFocus={onFocus}
-      // onBlur={onBlur}
-      // onSearch={onSearch}
+      value={undefined}
       notFoundContent={<FormattedMessage {...messages.notFound} />}
       filterOption={filterOption}
     >

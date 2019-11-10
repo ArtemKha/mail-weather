@@ -8,5 +8,5 @@ export const citiesLoaded = cities =>
 export const citiesLoadingError = (error: object) =>
   action(ActionTypes.LOAD_CITIES_ERROR, error);
 
-export const setCurrency = temperature =>
+export const setTemperature = temperature =>
   action(ActionTypes.SET_TEMPERATURE, temperature);

@@ -11,7 +11,8 @@ export const initialState: ContainerState = {
   temperature: 0,
 };
 
-// Take this container's state (as a slice of root state), this container's actions and return new state
+/* we don't need to use redux at all, but it is a requirement */
+
 function appReducer(
   state: ContainerState = initialState,
   action: ContainerActions,

@@ -7,12 +7,16 @@ import { Icon } from 'antd';
 
 interface Props {
   city: City;
-  onClose: () => void;
+  onClose: (name: string) => void;
 }
 export const CityInfo: React.FC<Props> = ({ city, onClose }) => {
   return (
     <Container>
-      <Close onClick={onClose}>
+      <Close
+        onClick={() => {
+          onClose(city.name);
+        }}
+      >
         <Icon type="close-circle" />
       </Close>
       <Title>

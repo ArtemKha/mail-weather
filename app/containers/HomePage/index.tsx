@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Select, Slider } from 'antd';
+import {
+  useSelector as useReduxSelector,
+  useDispatch,
+  TypedUseSelectorHook,
+} from 'react-redux';
+import { Slider } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import Search from './Search';
+import { ApplicationRootState } from 'types';
+import { City } from 'containers/App/types';
+import { setTemperature } from 'containers/App/actions';
 import {
   Container,
   Section,
@@ -12,12 +18,8 @@ import {
   SearchSection,
 } from './styled';
 import { CityInfo } from './CityInfo';
-import {
-  useSelector as useReduxSelector,
-  TypedUseSelectorHook,
-} from 'react-redux';
-import { ApplicationRootState } from 'types';
-import { City } from 'containers/App/types';
+import messages from './messages';
+import Search from './Search';
 
 const useSelector: TypedUseSelectorHook<
   ApplicationRootState
@@ -31,18 +33,23 @@ const HomePage: React.FC = () => {
   const [activeCities, setActiveCities] = useState(cities.slice(0, 3));
   const [optionCities, setOptionCities] = useState(cities.slice(0, 3));
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setOptionCities(cities.filter(city => city.temp >= temperature));
   }, [temperature]);
 
-  function onSelect() {
-    //
+  function onSelect(name) {
+    const city = optionCities.find(city => city.name === name)!;
+    const newCities = new Set(activeCities).add(city);
+    setActiveCities(Array.from(newCities));
   }
-  function onClose() {
-    //
+  function onClose(name) {
+    const newCities = activeCities.filter(city => city.name !== name)!;
+    setActiveCities(newCities);
   }
-  function onFilter() {
-    //
+  function onFilter(value) {
+    dispatch(setTemperature(value));
   }
   return (
     <Container>
@@ -60,8 +67,8 @@ const HomePage: React.FC = () => {
       <Section>
         {activeCities
           .filter(city => city.temp >= temperature)
-          .map((city, i) => (
-            <CityInfo key={i} city={city} onClose={onClose} />
+          .map(city => (
+            <CityInfo key={city.name} city={city} onClose={onClose} />
           ))}
       </Section>
     </Container>

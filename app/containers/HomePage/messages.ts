@@ -10,7 +10,7 @@ export const scope = 'containers.HomePage';
 export default defineMessages({
   placeholder: {
     id: `${scope}.placeholder`,
-    defaultMessage: 'Search',
+    defaultMessage: 'Выберете город',
   },
   notFound: {
     id: `${scope}.notFound`,
