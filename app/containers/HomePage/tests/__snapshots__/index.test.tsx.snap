@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> should render and match the snapshot 1`] = `
+<main
+  class="sc-EHOje gpidVX"
+>
+  <section
+    class="sc-bwzfXH yQUbn"
+  >
+    <div
+      class="ant-select ant-select-enabled"
+      style="width: 100%;"
+    >
+      <div
+        aria-autocomplete="list"
+        aria-controls="test-uuid"
+        aria-expanded="false"
+        aria-haspopup="true"
+        class="ant-select-selection
+            ant-select-selection--single"
+        role="combobox"
+        tabindex="0"
+      >
+        <div
+          class="ant-select-selection__rendered"
+        >
+          <div
+            class="ant-select-selection__placeholder"
+            style="display: block; user-select: none;"
+            unselectable="on"
+          >
+            <span>
+              Выберете город
+            </span>
+          </div>
+          <div
+            class="ant-select-search ant-select-search--inline"
+            style="display: none;"
+          >
+            <div
+              class="ant-select-search__field__wrap"
+            >
+              <input
+                autocomplete="off"
+                class="ant-select-search__field"
+                value=""
+              />
+              <span
+                class="ant-select-search__field__mirror"
+              >
+                
+                 
+              </span>
+            </div>
+          </div>
+        </div>
+        <span
+          class="ant-select-arrow"
+          style="user-select: none;"
+          unselectable="on"
+        >
+          <i
+            aria-label="icon: down"
+            class="anticon anticon-down ant-select-arrow-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="down"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+              />
+            </svg>
+          </i>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section
+    class="sc-htpNat boLlBa"
+  >
+    <label
+      class="sc-bxivhb cRHmGX"
+    >
+      <span>
+        Теплее чем
+      </span>
+    </label>
+    <label
+      class="sc-ifAKCX IgzzV"
+    >
+      <div
+        class="ant-slider"
+      >
+        <div
+          class="ant-slider-rail"
+        />
+        <div
+          class="ant-slider-track"
+          style="left: 0%; width: 50%;"
+        />
+        <div
+          class="ant-slider-step"
+        />
+        <div
+          aria-disabled="false"
+          aria-valuemax="20"
+          aria-valuemin="-20"
+          aria-valuenow="0"
+          class="ant-slider-handle"
+          role="slider"
+          style="left: 50%; transform: translateX(-50%);"
+          tabindex="0"
+        />
+        <div
+          class="ant-slider-mark"
+        />
+      </div>
+    </label>
+  </section>
+  <section
+    class="sc-bdVaJa fGyBAk"
+  >
+    <div
+      style="position: relative;"
+    />
+  </section>
+</main>
+`;

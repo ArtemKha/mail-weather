@@ -11,7 +11,6 @@ interface Props {
   onSelect: (name: string) => void;
 }
 const Search: React.FC<Props> = ({ options, onSelect }) => {
-  const [selected, setSelected] = useState('');
   function filterOption(input, option) {
     return (
       option.props
@@ -23,6 +22,7 @@ const Search: React.FC<Props> = ({ options, onSelect }) => {
 
   return (
     <Select
+      data-testid="search"
       showSearch
       style={{ width: '100%' }}
       placeholder={<FormattedMessage {...messages.placeholder} />}

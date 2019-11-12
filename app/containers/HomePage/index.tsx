@@ -9,7 +9,7 @@ import { Slider } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import { ApplicationRootState } from 'types';
 import { City } from 'containers/App/types';
-import { setTemperature, loadCities } from 'containers/App/actions';
+import { setTemperature } from 'containers/App/actions';
 import {
   Container,
   Section,
@@ -43,8 +43,10 @@ const HomePage: React.FC = () => {
 
   function onSelect(name) {
     const city = optionCities.find(city => city.name === name)!;
-    const newCities = new Set(activeCities).add(city);
-    setActiveCities(Array.from(newCities));
+    if (city) {
+      const newCities = new Set(activeCities).add(city);
+      setActiveCities(Array.from(newCities));
+    }
   }
 
   function onClose(name) {

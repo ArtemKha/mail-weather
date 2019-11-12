@@ -1,20 +1,19 @@
 import { ContainerState, ContainerActions, City } from './types';
 import ActionTypes from './constants';
-
-const init: City[] = [];
+import { cities } from 'mocks/cities';
 
 // The initial state of the App
-export const initialState: ContainerState = {
+export const initialGlobalState: ContainerState = {
   loading: false,
   error: false,
-  cities: [...init],
+  cities,
   temperature: 0,
 };
 
 /* we don't need to use redux at all, but it is a requirement */
 
 function appReducer(
-  state: ContainerState = initialState,
+  state: ContainerState = initialGlobalState,
   action: ContainerActions,
 ): ContainerState {
   switch (action.type) {
